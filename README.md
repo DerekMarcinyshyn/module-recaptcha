@@ -22,7 +22,7 @@ Secret Key -> from Recaptcha website
 #### Composer
 
 ```bash
-composer require monashee/recaptcha
+composer require monashee/module-recaptcha
 ```
 
 Enable Module

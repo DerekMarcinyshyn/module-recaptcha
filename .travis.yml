@@ -6,5 +6,5 @@ script:
  - wget https://github.com/magento/magento2/archive/2.1.5.zip
  - unzip -qq 2.1.5.zip
  - cd magento2-2.1.5/
- - composer require --no-interaction "monashee/recaptcha":"dev-master"
- - ./vendor/bin/phpunit -c vendor/monashee/recaptcha/phpunit.xml.dist
+ - composer require --no-interaction "monashee/module-recaptcha":"dev-master"
+ - ./vendor/bin/phpunit -c vendor/monashee/module-recaptcha/phpunit.xml.dist
