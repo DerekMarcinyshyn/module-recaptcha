@@ -1,5 +1,7 @@
 # Magento 2 Recaptcha
 
+[![Build Status](https://travis-ci.org/DerekMarcinyshyn/recaptcha.svg?branch=master)](https://travis-ci.org/DerekMarcinyshyn/recaptcha)
+
 Adds the Google Recaptcha on Contact Form, Customer create and Forgot Password pages.
 
 ## Register
