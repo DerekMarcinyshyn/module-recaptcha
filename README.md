@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/DerekMarcinyshyn/module-recaptcha.svg?branch=master)](https://travis-ci.org/DerekMarcinyshyn/recaptcha)
 
-Adds the Google Recaptcha on Contact Form, Customer create and Forgot Password pages.
+Magento 2 module that adds the Google Recaptcha on Contact Form, Customer create and Forgot Password pages.
 
 
 ## Screenshot
