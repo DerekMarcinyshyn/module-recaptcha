@@ -4,6 +4,10 @@
 
 Adds the Google Recaptcha on Contact Form, Customer create and Forgot Password pages.
 
+
+## Screenshot
+![settings screenshot](https://raw.githubusercontent.com/DerekMarcinyshyn/recaptcha/master/settings-screenshot.jpg)
+
 ## Register
 
 You need to register your site with Google Recaptcha.
