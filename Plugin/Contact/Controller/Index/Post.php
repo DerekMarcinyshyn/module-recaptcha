@@ -2,9 +2,9 @@
 /**
  * Magento 2 Recaptcha for Contact Page, Customer Create, and Forgot Password
  * Copyright (C) 2017  Derek Marcinyshyn
- * 
+ *
  * This file included in Monashee/Recaptcha is licensed under OSL 3.0
- * 
+ *
  * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * Please see LICENSE.txt for the full text of the OSL 3.0 license
  */
@@ -14,6 +14,8 @@ namespace Monashee\Recaptcha\Plugin\Contact\Controller\Index;
 use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Message\ManagerInterface;
 use Monashee\Recaptcha\Helper\Data;
+use Magento\Framework\App\Request\DataPersistorInterface;
+use Magento\Framework\App\ObjectManager;
 
 class Post
 {
@@ -61,7 +63,10 @@ class Post
         \Closure $proceed
     ) {
         if ($this->dataHelper->isEnabled()) {
-            $recaptchaResponse = $subject->getRequest()->getPost('g-recaptcha-response');
+            $request = $subject->getRequest();
+            $recaptchaResponse = $request->getPost('g-recaptcha-response');
+
+            $hasError = false;
 
             if ($recaptchaResponse) {
                 $secretKey = $this->dataHelper->getSecretKey();
@@ -72,9 +77,17 @@ class Post
                 if (isset($result['success']) && $result['success']) {
                     return $proceed();
                 } else {
-                    return $this->recaptchaError();
+                    $hasError = true;
                 }
             } else {
+                $hasError = true;
+            }
+
+            if ($hasError) {
+                $dataPersistor = ObjectManager::getInstance()->get(DataPersistorInterface::class);
+                $post = $request->getPostValue();
+                $dataPersistor->set('contact_us', $post);
+
                 return $this->recaptchaError();
             }
         }
